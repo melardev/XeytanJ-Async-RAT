@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: melardev
+Created-By: Apache Maven 3.3.9
+Build-Jdk: 1.8.0_77
+Server-Port: 3002
+Connection-Key: XeytaJServer
+Enable-Persistence: true
+Server-Host: localhost
+Connection-Retry: 780
+

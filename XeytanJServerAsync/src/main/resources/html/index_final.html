@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div client="map"></div>
+<script>
+    var map;
+    var markers = [];
+    var infoWindows = [];
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat:0, lng:0},
+            zoom: 3
+        });
+
+        map.addListener('click', function(){
+            console.log('map clicked');
+            if(infoWindows.length > 0){
+                for (var i = infoWindows.length - 1; i >= 0; i--) {
+                    infoWindows[i].close();
+                }
+            }
+                
+        });
+        //TEMPLATE_BEGIN_MARKERS
+        marker = new google.maps.Marker({
+		position: {lat: 12.2, lng: 12.2 },
+		map: map,title:'Melardev',
+		icon: 'imgs/linux_gray_32.png'
+		});
+		markers.push(marker);
+		marker.addListener('click', function() {
+			infoWindow = new google.maps.InfoWindow({
+			packetContent : '<div><h3>Melardev</h3><h4>Madrid(Spain)</h4><p>OS :Linux<br />Ip : 127.0.0.1<br /> (Lat, Lon) : (12.2, 12.2)<br />Loaded : FROM_DATABASE</p></div>'
+		});
+		infoWindows.push(infoWindow);infoWindow.open(map, this);
+		});marker = new google.maps.Marker({
+		position: {lat: 22.2, lng: 32.2 },
+		map: map,title:'Melardev',
+		icon: 'imgs/windows_32.png'
+		});
+		markers.push(marker);
+		marker.addListener('click', function() {
+			infoWindow = new google.maps.InfoWindow({
+			packetContent : '<div><h3>Melardev</h3><h4>Madrid(Spain)</h4><p>OS :Windows<br />Ip : 127.0.0.1<br /> (Lat, Lon) : (22.2, 32.2)<br />Loaded : FROM_ACTIVE_CONNECTIONS</p></div>'
+		});
+		infoWindows.push(infoWindow);infoWindow.open(map, this);
+		});marker = new google.maps.Marker({
+		position: {lat: 0.2, lng: 2.2 },
+		map: map,title:'MelarMac',
+		icon: 'imgs/mac_32.png'
+		});
+		markers.push(marker);
+		marker.addListener('click', function() {
+			infoWindow = new google.maps.InfoWindow({
+			packetContent : '<div><h3>MelarMac</h3><h4>Madrid(France)</h4><p>OS :Mac<br />Ip : 127.0.0.1<br /> (Lat, Lon) : (0.2, 2.2)<br />Loaded : FROM_ACTIVE_CONNECTIONS</p></div>'
+		});
+		infoWindows.push(infoWindow);infoWindow.open(map, this);
+		});
+		//TEMPLATE_END_MARKERS
+
+        if(markers.lenght == 0)
+            setTimeOut(function(){location.reload();},50);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+</body>
+</html>

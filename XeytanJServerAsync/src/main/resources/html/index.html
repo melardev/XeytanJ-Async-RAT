@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div client="map"></div>
+<script>
+    var map;
+    var markers = [];
+    var infoWindows = [];
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat:0, lng:0},
+            zoom: 3
+        });
+
+        map.addListener('click', function(){
+            console.log('map clicked');
+            if(infoWindows.length > 0){
+                for (var i = infoWindows.length - 1; i >= 0; i--) {
+                    infoWindows[i].close();
+                }
+            }
+                
+        });
+        //TEMPLATE_BEGIN_MARKERS
+        var myLatLng = {lat: -25.363, lng: 131.044};
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+        //TEMPLATE_END_MARKERS
+
+        if(markers.lenght == 0)
+            setTimeOut(function(){location.reload();},50);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+</body>
+</html>

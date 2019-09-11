@@ -1,0 +1,10 @@
+com.melardev.xeytanj.services.logger.ConsoleLogger
+com.melardev.xeytanj.gui.mediator.swing.SwingMediator
+com.melardev.xeytanj.services.config.ConfigService
+com.melardev.xeytanj.services.IAppMessages
+com.melardev.xeytanj.services.net.transport.p2p.sync.P2PSyncTcpServerService
+com.melardev.xeytanj.services.net.transport.p2p.async.completion.AsyncServerCompletionHandler
+com.melardev.xeytanj.services.net.transport.p2p.async.select.AsyncServerSelectKey
+com.melardev.xeytanj.services.data.FsJdbcStorage
+com.melardev.xeytanj.services.builder.JarClientBuilder
+com.melardev.xeytanj.concurrent.communicators.reactive.twoway.ui.SwingAndBackgroundReactiveCommunicator
